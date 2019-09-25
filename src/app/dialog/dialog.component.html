@@ -1,0 +1,6 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content class="error">{{ msg }}</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button (click)="ok()" *ngIf="isConfirmDlg">OK</button>
+  <button mat-raised-button (click)="cancel()" *ngIf="isConfirmDlg">Cancel</button>
+</mat-dialog-actions>

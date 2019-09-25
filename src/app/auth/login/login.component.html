@@ -1,0 +1,24 @@
+<div style="text-align:center; margin-bottom: 1.5rem">
+    <img src="assets/logo.png">
+</div>
+<h4 style="text-align:center; margin-bottom: 4.5rem">画像AI解析</h4>
+<h1 style="margin-bottom: 1.5rem">ユーザ登録</h1>
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onLogin(loginForm)" #loginForm="ngForm" *ngIf="!isLoading">
+    <mat-form-field>
+      <input matInput name="username" ngModel type="text" placeholder="Username" #usernameInput="ngModel" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+    </mat-form-field>
+    <div class="login-btn">
+      <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">Login</button>
+    </div>
+    <div class="signup-btn">
+      <button mat-button type="button" [routerLink]="['/signup']" *ngIf="!isLoading">SignUp</button>
+    </div>
+  </form>
+</mat-card>
+
+

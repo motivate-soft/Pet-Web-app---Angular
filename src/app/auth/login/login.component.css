@@ -1,0 +1,18 @@
+mat-form-field {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+.logo {
+  width: 50%;
+}
+.login-btn {
+  text-align: right;
+  margin-bottom: 20px;
+}
+.signup-btn {
+  text-align: right;
+}
+

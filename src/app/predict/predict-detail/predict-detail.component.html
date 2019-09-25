@@ -1,0 +1,39 @@
+<header></header>
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <h4 *ngIf="!isLoading">{{ analyzeDate }} 解析</h4>
+    <form (ngSubmit)="onPredictUpdate()" [formGroup]="predictDetailForm" *ngIf="!isLoading">
+        <mat-form-field>
+            <input matInput formControlName="petOwner" type="text" placeholder="オーナー様" >
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="petName" type="text" placeholder="ペット名" >
+        </mat-form-field>
+         <mat-form-field>
+            <mat-select formControlName="petBreedCode" placeholder="犬種・猫種" >
+                <mat-option *ngFor="let petBreedCode of petBreedCodes" [value]="petBreedCode.value">
+                    {{petBreedCode.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="petBirthday" [matDatepicker]="picker" placeholder="生年月日" >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-radio-group formControlName="petGenderCode" >
+            <mat-radio-button *ngFor="let petGenderCode of petGenderCodes" [value]="petGenderCode.value">
+                {{petGenderCode.viewValue}}
+            </mat-radio-button>
+        </mat-radio-group>
+        <div>
+            <img [src]="imageSrc" style="max-width:512px;max-height:512px" />
+        </div>
+        <div>
+            <label>{{filename}}</label>
+        </div>
+        <div class="button-row">
+            <button mat-raised-button color="accent" type="submit" class="update-btn">修正</button>
+        </div>
+    </form>
+</mat-card>

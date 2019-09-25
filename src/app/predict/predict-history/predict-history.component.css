@@ -1,0 +1,17 @@
+div .mat-list-item-content {
+    display: block;
+}
+mat-stroked-button {
+    float: right;
+}
+.view-row {
+    width: 100%;
+}
+.view-btn {
+    width: 100%;
+    text-align: right;
+}
+.history-list {
+    height: 750px;
+    overflow-y: scroll;
+}

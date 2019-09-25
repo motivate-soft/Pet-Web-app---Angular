@@ -1,0 +1,18 @@
+<header></header>
+<mat-list>
+    <div class="history-list" 
+    infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="false">
+    <mat-list-item *ngFor="let predict of predicts; let i = index">
+        <div class="view-row">
+            <h5>{{ predict.analyzeDate }}
+            {{ predict.petOwner }}
+            {{ predict.petName }}
+            {{ predict.petGenderCode }}</h5>
+        </div>
+        <div class="view-btn">
+            <button mat-stroked-button color="accent" [routerLink]="['/detail', predict.id]">詳細</button>
+        </div>
+        <mat-divider></mat-divider>
+    </mat-list-item>
+    </div>
+</mat-list>

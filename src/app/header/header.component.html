@@ -1,0 +1,8 @@
+<div class="header">
+  <button mat-stroked-button [matMenuTriggerFor]="menu">{{ username }}</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngIf="isPredict" routerLink="/predict">AI解析</button>
+    <button mat-menu-item *ngIf="isHistory" routerLink="/history">AI解析履歴</button>
+    <button mat-menu-item (click)="onLogout()">ログアウト</button>
+  </mat-menu>
+</div>

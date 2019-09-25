@@ -1,0 +1,55 @@
+<header></header>
+<mat-card>
+    <form (ngSubmit)="onAnaylze()" [formGroup]="predictCreateForm">
+        <mat-form-field>
+            <input matInput formControlName="petOwner" type="text" placeholder="オーナー様" >
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="petName" type="text" placeholder="ペット名" >
+        </mat-form-field>
+         <mat-form-field>
+            <mat-select formControlName="petBreedCode" placeholder="犬種・猫種" >
+                <mat-option *ngFor="let petBreedCode of petBreedCodes" [value]="petBreedCode.value">
+                    {{petBreedCode.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput formControlName="petBirthday" [matDatepicker]="picker" placeholder="生年月日" >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-radio-group formControlName="petGenderCode" >
+            <mat-radio-button *ngFor="let petGenderCode of petGenderCodes" [value]="petGenderCode.value">
+                {{petGenderCode.viewValue}}
+            </mat-radio-button>
+        </mat-radio-group>
+        <div>
+            <button mat-raised-button color="primary" type="button" (click)="filePicker.click()" class="upload-btn">Pick Image</button>
+            <img [src]="imageSrc" style="max-width:512px;max-height:512px" />
+            <input name="dataFileName" type="file" #filePicker accept="image/*" (change)="handleInputChange($event)" hidden />
+        </div>
+        <div>
+            <label>{{filename}}</label>
+        </div>
+        <mat-spinner *ngIf="isLoading"></mat-spinner>
+        <div class="predict-result" *ngIf="!isLoading">
+            <h4>{{ predictedLabels }}</h4>
+            <h4>{{ probabilities }}</h4>
+            <h4>{{ predictResult }}</h4>
+            <div style="background-color:#FF00FF; width: 15px; height: 15px; margin: 5px;"></div>
+            <div style="background-color:#FF00FF; width: 15px; height: 15px; margin: 5px;"></div>
+            <div style="background-color:#FF00FF; width: 15px; height: 15px; margin: 5px;"></div>
+            <div style="background-color:#FF00FF; width: 15px; height: 15px; margin: 5px;"></div>
+            <div style="background-color:#FF00FF; width: 15px; height: 15px; margin: 5px;"></div>
+            <div style="background-color:#FF00FF; width: 15px; height: 15px; margin: 5px;"></div>
+            <div style="background-color:#FF00FF; width: 15px; height: 15px; margin: 5px;"></div>
+            <div style="background-color:#FF00FF; width: 15px; height: 15px; margin: 5px;"></div>
+            <div style="background-color:#FF00FF; width: 15px; height: 15px; margin: 5px;"></div>
+            <div style="background-color:#FF00FF; width: 15px; height: 15px; margin: 5px;"></div>
+        </div>
+        <div class="button-row">
+            <button mat-fab color="accent" type="submit" [disabled]="predictCreateForm.invalid || !selectedImg">Analyze</button>
+        </div>
+    </form>
+</mat-card>
